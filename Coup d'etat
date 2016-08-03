@@ -1,0 +1,20 @@
+# Set libPaths.
+.libPaths("C:\\Users\\trichards\\.exploratory\\R\\3.3")
+
+# Load required packages.
+library(lubridate)
+library(tidyr)
+library(urltools)
+library(stringr)
+library(readr)
+library(broom)
+library(RcppRoll)
+library(tibble)
+library(dplyr)
+library(exploratory)
+
+# Data Analysis Steps
+read_delim("C:\\Users\\trichards\\Downloads\\Coup de etat - Sheet1.csv" , ",", quote = "\"", skip = 0 , col_names = TRUE , na = c("","NA"), n_max=-1 , locale=locale(encoding = "ASCII", decimal_mark = ".") , progress = FALSE) %>%
+  exploratory::clean_data_frame() %>%
+  arrange(desc(country)) %>%
+  filter(coup == 2)
